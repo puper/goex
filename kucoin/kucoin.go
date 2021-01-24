@@ -1,10 +1,11 @@
 package kucoin
 
 import (
-	"github.com/Kucoin/kucoin-go-sdk"
-	. "github.com/nntaoli-project/goex"
-	log "github.com/nntaoli-project/goex/internal/logger"
 	"time"
+
+	"github.com/Kucoin/kucoin-go-sdk"
+	. "github.com/puper/goex"
+	log "github.com/puper/goex/internal/logger"
 )
 
 func New(apiKey, apiSecret, apiPassphrase string) *KuCoin {

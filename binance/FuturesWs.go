@@ -3,14 +3,15 @@ package binance
 import (
 	"encoding/json"
 	"errors"
-	"github.com/nntaoli-project/goex"
-	"github.com/nntaoli-project/goex/internal/logger"
 	"net/http"
 	"net/url"
 	"os"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/puper/goex"
+	"github.com/puper/goex/internal/logger"
 )
 
 type FuturesWs struct {

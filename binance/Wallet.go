@@ -4,9 +4,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	. "github.com/nntaoli-project/goex"
-	"github.com/nntaoli-project/goex/internal/logger"
 	"net/url"
+
+	. "github.com/puper/goex"
+	"github.com/puper/goex/internal/logger"
 )
 
 type Wallet struct {

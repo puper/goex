@@ -1,9 +1,10 @@
 package bithumb
 
 import (
-	"github.com/nntaoli-project/goex"
 	"net/http"
 	"testing"
+
+	"github.com/puper/goex"
 )
 
 var bh = New(http.DefaultClient, "", "")

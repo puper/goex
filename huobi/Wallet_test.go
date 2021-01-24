@@ -1,8 +1,9 @@
 package huobi
 
 import (
-	"github.com/nntaoli-project/goex"
 	"testing"
+
+	"github.com/puper/goex"
 )
 
 var wallet *Wallet

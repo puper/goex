@@ -1,9 +1,10 @@
 package bigone
 
 import (
-	. "github.com/nntaoli-project/goex"
 	"net/http"
 	"testing"
+
+	. "github.com/puper/goex"
 
 	"net"
 	"net/url"

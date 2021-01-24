@@ -5,11 +5,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	. "github.com/nntaoli-project/goex"
-	"github.com/nntaoli-project/goex/internal/logger"
 	"strings"
 	"sync"
 	"time"
+
+	. "github.com/puper/goex"
+	"github.com/puper/goex/internal/logger"
 )
 
 type SpotWs struct {

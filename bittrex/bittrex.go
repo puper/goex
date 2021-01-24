@@ -3,9 +3,10 @@ package bittrex
 import (
 	"errors"
 	"fmt"
-	. "github.com/nntaoli-project/goex"
 	"net/http"
 	"sort"
+
+	. "github.com/puper/goex"
 )
 
 type Bittrex struct {

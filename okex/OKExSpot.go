@@ -2,13 +2,14 @@ package okex
 
 import (
 	"fmt"
-	"github.com/go-openapi/errors"
-	. "github.com/nntaoli-project/goex"
-	"github.com/nntaoli-project/goex/internal/logger"
 	"net/url"
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/go-openapi/errors"
+	. "github.com/puper/goex"
+	"github.com/puper/goex/internal/logger"
 )
 
 type OKExSpot struct {

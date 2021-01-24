@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	. "github.com/nntaoli-project/goex"
 	"net/http"
 	"net/url"
 	"sort"
 	"strconv"
 	"strings"
 	"time"
+
+	. "github.com/puper/goex"
 )
 
 const (
@@ -521,7 +522,15 @@ func (bn *Binance) GetKlineRecords(currency CurrencyPair, period KlinePeriod, si
 
 //非个人，整个交易所的交易记录
 //注意：since is fromId
+// 如果since小于0，当作时间戳
 func (bn *Binance) GetTrades(currencyPair CurrencyPair, since int64) ([]Trade, error) {
+	if since < 0 {
+		var err error
+		since, err = bn.GetTradeId(currencyPair, -since)
+		if err != nil {
+			return nil, err
+		}
+	}
 	param := url.Values{}
 	param.Set("symbol", currencyPair.ToSymbol(""))
 	param.Set("limit", "500")
@@ -553,6 +562,24 @@ func (bn *Binance) GetTrades(currencyPair CurrencyPair, since int64) ([]Trade, e
 	}
 
 	return trades, nil
+}
+
+func (bn *Binance) GetTradeId(currencyPair CurrencyPair, startTime int64) (int64, error) {
+	param := url.Values{}
+	param.Set("symbol", currencyPair.ToSymbol(""))
+	param.Set("limit", "1")
+	param.Set("startTime", fmt.Sprint(startTime))
+	param.Set("endTime", fmt.Sprint(startTime+1e4))
+	apiUrl := bn.apiV3 + "aggTrades?" + param.Encode()
+	resp, err := HttpGet3(bn.httpClient, apiUrl, map[string]string{
+		"X-MBX-APIKEY": bn.accessKey})
+	if err != nil {
+		return -1, err
+	}
+	if len(resp) == 0 {
+		return -1, fmt.Errorf("can't get trade id by %v: %v", currencyPair.ToSymbol(""), startTime)
+	}
+	return ToInt64(resp[0].(map[string]interface{})["f"]), nil
 }
 
 func (bn *Binance) GetOrderHistorys(currency CurrencyPair, optional ...OptionalParameter) ([]Order, error) {

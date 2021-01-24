@@ -1,12 +1,13 @@
 package okex
 
 import (
-	"github.com/nntaoli-project/goex"
-	"github.com/nntaoli-project/goex/internal/logger"
-	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
 	"time"
+
+	"github.com/puper/goex"
+	"github.com/puper/goex/internal/logger"
+	"github.com/stretchr/testify/assert"
 )
 
 func init() {

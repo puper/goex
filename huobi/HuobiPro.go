@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	. "github.com/nntaoli-project/goex"
-	. "github.com/nntaoli-project/goex/internal/logger"
+	. "github.com/puper/goex"
+	. "github.com/puper/goex/internal/logger"
 )
 
 var HBPOINT = NewCurrency("HBPOINT", "")
